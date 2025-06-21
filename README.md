@@ -17,7 +17,7 @@ This project is a Document-based Question Answering (QA) System built using Lang
 - FAISS (Facebook AI Similarity Search)
 - Google Generative AI (Gemini Pro for embeddings and response generation)
 - Streamlit (for building the web interface)
-- PyMuPDF (for PDF text extraction)
+- Pyngrok (for creating public URL)
 
 ## How It Works
 
