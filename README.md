@@ -1,55 +1,52 @@
+# Document-based Question Answering System
 
-# Document-Based Question Answering System
-
-This project is a Document-based Question Answering System built using Google Gemini API and LangChain, deployed using Streamlit and served publicly via Ngrok. It enables users to upload a document, process it using chunking and embeddings, and ask contextually relevant questions. The system provides intelligent answers using a large language model.
+This project is a Document-based Question Answering (QA) System built using LangChain and Gemini Pro. It enables users to upload documents and ask context-based questions, receiving accurate answers using embedded document context.
 
 ## Features
 
-- Upload and parse documents
-- Chunk and embed document text using Google Gemini Embeddings
-- Retrieve context-aware answers via LangChain's retrieval chain
-- Integrated with Google Gemini 2.5 Pro model for content generation
-- Deployable on Streamlit and sharable via Ngrok tunneling
+- Upload and process documents with automatic chunking
+- Convert PDF or text input into vector embeddings using Google's Gemini model
+- Use FAISS for storing and retrieving document chunks efficiently
+- Answer user queries by matching document context with questions
+- Web UI built using Streamlit for user interaction
 
-## Stack Used
+## Tech Stack
 
-- Frontend: Streamlit
-- Backend: Python, LangChain
-- LLM: Google Gemini 2.5 Pro (via LangChain)
-- Embeddings: GoogleGenerativeAIEmbeddings
-- Vector DB: FAISS
-- Utilities: Ngrok, dotenv, PyPDF
+- Python
+- LangChain
+- FAISS (Facebook AI Similarity Search)
+- Google Generative AI (Gemini Pro for embeddings and response generation)
+- Streamlit (for building the web interface)
+- PyMuPDF (for PDF text extraction)
 
-## Setup Instructions
+## How It Works
 
-1. Install dependencies:
+1. Upload a document via the Streamlit interface.
+2. The document is read, split into chunks, and embedded using Gemini embeddings.
+3. The chunks are stored in a FAISS vector database.
+4. User queries are matched with relevant document chunks.
+5. The system generates an answer using Gemini based on the retrieved context.
+
+## Local Deployment
+
+To run the project locally:
 
 ```bash
 pip install -r requirements.txt
-```
-
-2. Set up your `.env` or `secrets.toml` for API keys (Streamlit Cloud users must use `secrets.toml`):
-
-```toml
-# .streamlit/secrets.toml
-GEMINI_API_KEY = "your_google_gemini_api_key"
-```
-
-3. Run the app:
-
-```bash
 streamlit run app.py
 ```
 
-4. If using Ngrok:
+## Usage
 
-```bash
-ngrok config add-authtoken YOUR_AUTH_TOKEN
-ngrok http 8501
-```
+- Upload a document (PDF or text).
+- Enter a question related to the uploaded document.
+- View the generated answer and context.
 
-## Deployment
+## Limitations
 
-You can deploy the app for free using:
-- Streamlit Cloud: https://streamlit.io/cloud
-- Ngrok (for local development sharing)
+- Free-tier Gemini API quotas may restrict the number of queries per day.
+- ngrok may limit concurrent tunnels for free accounts.
+
+## License
+
+This project is for educational purposes only.
